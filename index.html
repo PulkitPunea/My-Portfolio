@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulkit Punea | Software Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #00d1ff, #0072ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(15, 15, 15, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 210, 255, 0.1);
+            border-color: rgba(0, 210, 255, 0.3);
+        }
+        
+        .skill-pill {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .skill-pill:hover {
+            background: rgba(0, 210, 255, 0.1) !important;
+            border-color: #00d1ff !important;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #00d1ff, #0072ff);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .glass-effect {
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        input, textarea {
+            background: rgba(20, 20, 20, 0.7) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #00d1ff !important;
+            box-shadow: 0 0 0 2px rgba(0, 210, 255, 0.2) !important;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #00d1ff;
+            box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.2);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 20px;
+            bottom: -20px;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .typewriter {
+            border-right: 2px solid #00d1ff;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00d1ff }
+        }
+        
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 30%, rgba(0, 114, 255, 0.15) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full glass-effect z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gradient-text">PP</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-white/90 hover:text-white">Home</a>
+                <a href="#about" class="nav-link text-white/90 hover:text-white">About</a>
+                <a href="#experience" class="nav-link text-white/90 hover:text-white">Experience</a>
+                <a href="#projects" class="nav-link text-white/90 hover:text-white">Projects</a>
+                <a href="#contact" class="nav-link text-white/90 hover:text-white">Contact</a>
+            </div>
+            <button class="md:hidden text-white/90" id="mobileMenuButton">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden glass-effect py-4 px-6">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="nav-link text-white/90 hover:text-white">Home</a>
+                <a href="#about" class="nav-link text-white/90 hover:text-white">About</a>
+                <a href="#experience" class="nav-link text-white/90 hover:text-white">Experience</a>
+                <a href="#projects" class="nav-link text-white/90 hover:text-white">Projects</a>
+                <a href="#contact" class="nav-link text-white/90 hover:text-white">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 hero-gradient">
+        <div class="max-w-7xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <p class="text-blue-400 mb-4 font-mono">Hi, my name is</p>
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white">Pulkit Punea.</h1>
+                <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-white/80 typewriter">I build digital experiences.</h2>
+                <p class="text-lg text-white/70 mb-8 max-w-lg">I'm a software developer specializing in building exceptional digital experiences. Currently focused on creating scalable web applications with cutting-edge technologies.</p>
+                <div class="flex space-x-4">
+                    <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity">View Work</a>
+                    <a href="#contact" class="px-6 py-3 border border-white/20 rounded-lg font-medium hover:bg-white/5 transition-colors">Contact Me</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-r from-blue-500/30 to-blue-600/30 absolute -z-10 top-4 left-4 animate-pulse"></div>
+                    <img src="avatar.jpeg" 
+                         alt="Pulkit Punea" 
+                         class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white/10 shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-white"><span class="gradient-text">About Me</span></h2>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-blue-600/20 rounded-lg transform group-hover:-rotate-3 transition duration-300"></div>
+                        <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Working" 
+                             class="relative rounded-lg shadow-xl w-full max-w-md border border-white/10">
+                    </div>
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-lg mb-6 text-white/80">I'm a passionate software developer with expertise in full-stack development. My journey in tech began when I wrote my first line of code at 15, and since then I've been obsessed with creating elegant solutions to complex problems.</p>
+                    
+                    <p class="text-lg mb-6 text-white/80">I specialize in JavaScript/TypeScript ecosystems, with extensive experience in React, Node.js, and cloud technologies. I'm particularly interested in performance optimization and creating seamless user experiences.</p>
+                    
+                    <p class="text-lg mb-8 text-white/80">When I'm not coding, you can find me contributing to open-source projects, reading about emerging technologies, or exploring the outdoors. I'm also an active tech community member and enjoy mentoring aspiring developers.</p>
+                    
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <div class="skill-pill px-4 py-2 rounded-full font-medium bg-white/5">React</div>
+                        <div class="skill-pill px-4 py-2 rounded-full font-medium bg-white/5">TypeScript</div>
+                        <div class="skill-pill px-4 py-2 rounded-full font-medium bg-white/5">Node.js</div>
+                        <div class="skill-pill px-4 py-2 rounded-full font-medium bg-white/5">GraphQL</div>
+                        <div class="skill-pill px-4 py-2 rounded-full font-medium bg-white/5">AWS</div>
+                        <div class="skill-pill px-4 py-2 rounded-full font-medium bg-white/5">Docker</div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 text-white/80">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-400 mr-3"></i>
+                            <span>Pune, India</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-graduation-cap text-blue-400 mr-3"></i>
+                            <span>B.Tech Computer Science</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-briefcase text-blue-400 mr-3"></i>
+                            <span>4+ Years Experience</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-code text-blue-400 mr-3"></i>
+                            <span>Open Source Contributor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gradient-to-b from-black/50 to-black/80">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-white"><span class="gradient-text">Experience</span></h2>
+            
+            <div class="relative">
+                <!-- Timeline -->
+                <div class="space-y-8 ml-8">
+                    <!-- Experience 1 -->
+                    <div class="timeline-item relative pl-8">
+                        <div class="glass-effect p-6 rounded-lg">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                                <h3 class="text-xl font-bold text-white">Senior Software Engineer</h3>
+                                <span class="text-blue-400 font-mono text-sm">2022 - Present</span>
+                            </div>
+                            <h4 class="text-blue-400 mb-3">TechSolutions Inc.</h4>
+                            <p class="text-white/70 mb-4">Leading a team of developers to build scalable microservices architecture. Implemented CI/CD pipelines reducing deployment time by 40%.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">Node.js</span>
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">AWS</span>
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">Docker</span>
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">Kubernetes</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience 2 -->
+                    <div class="timeline-item relative pl-8">
+                        <div class="glass-effect p-6 rounded-lg">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                                <h3 class="text-xl font-bold text-white">Software Engineer</h3>
+                                <span class="text-blue-400 font-mono text-sm">2020 - 2022</span>
+                            </div>
+                            <h4 class="text-blue-400 mb-3">Digital Innovations Ltd.</h4>
+                            <p class="text-white/70 mb-4">Developed a React-based dashboard that improved client engagement metrics by 35%. Optimized backend services reducing API response times by 60%.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">React</span>
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">GraphQL</span>
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">MongoDB</span>
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">TypeScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience 3 -->
+                    <div class="timeline-item relative pl-8">
+                        <div class="glass-effect p-6 rounded-lg">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                                <h3 class="text-xl font-bold text-white">Junior Developer</h3>
+                                <span class="text-blue-400 font-mono text-sm">2018 - 2020</span>
+                            </div>
+                            <h4 class="text-blue-400 mb-3">WebCraft Studios</h4>
+                            <p class="text-white/70 mb-4">Built and maintained client websites with focus on accessibility and performance. Contributed to internal component library used across 20+ projects.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">JavaScript</span>
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">Vue.js</span>
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">PHP</span>
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-white"><span class="gradient-text">Featured Projects</span></h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div class="project-card rounded-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-blue-900/30 to-blue-600/30 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-5xl text-blue-400/30"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-white">Analytics Dashboard</h3>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-white/50 hover:text-blue-400 transition-colors">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="text-white/50 hover:text-blue-400 transition-colors">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="text-white/60 mb-4">Real-time business analytics platform with customizable dashboards and reporting.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">React</span>
+                            <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">D3.js</span>
+                            <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-400/20">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card rounded-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-purple-900/30 to-purple-600/30 flex items-center justify-center">
+                        <i class="fas fa-shopping-cart text-5xl text-purple-400/30"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-white">E-commerce Platform</h3>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-white/50 hover:text-blue-400 transition-colors">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="text-white/50 hover:text-blue-400 transition-colors">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="text-white/60 mb-4">Full-featured online store with payment processing and inventory management.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-purple-900/30 text-purple-400 px-2 py-1 rounded border border-purple-400/20">Next.js</span>
+                            <span class="text-xs bg-purple-900/30 text-purple-400 px-2 py-1 rounded border border-purple-400/20">Stripe</span>
+                            <span class="text-xs bg-purple-900/30 text-purple-400 px-2 py-1 rounded border border-purple-400/20">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card rounded-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-green-900/30 to-green-600/30 flex items-center justify-center">
+                        <i class="fas fa-tasks text-5xl text-green-400/30"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-white">Task Management</h3>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-white/50 hover:text-blue-400 transition-colors">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="text-white/50 hover:text-blue-400 transition-colors">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="text-white/60 mb-4">Collaborative task management system with real-time updates and team features.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-green-900/30 text-green-400 px-2 py-1 rounded border border-green-400/20">Vue.js</span>
+                            <span class="text-xs bg-green-900/30 text-green-400 px-2 py-1 rounded border border-green-400/20">Firebase</span>
+                            <span class="text-xs bg-green-900/30 text-green-400 px-2 py-1 rounded border border-green-400/20">WebSockets</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://github.com/PulkitPunea" class="px-6 py-3 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity inline-flex items-center">
+                    <i class="fab fa-github mr-2"></i> View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-b from-black/80 to-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-white"><span class="gradient-text">Get In Touch</span></h2>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Let's collaborate!</h3>
+                    <p class="text-white/70 mb-6">I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, I'll do my best to get back to you!</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-900/30 rounded-full flex items-center justify-center mr-4 border border-blue-400/20">
+                                <i class="fas fa-envelope text-blue-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-white/50 text-sm">Email</p>
+                                <a href="mailto:pulkit@example.com" class="font-medium text-white hover:text-blue-400 transition-colors">pulkit@example.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-900/30 rounded-full flex items-center justify-center mr-4 border border-blue-400/20">
+                                <i class="fab fa-linkedin-in text-blue-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-white/50 text-sm">LinkedIn</p>
+                                <a href="https://linkedin.com" target="_blank" class="font-medium text-white hover:text-blue-400 transition-colors">linkedin.com/in/pulkitpunea</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-900/30 rounded-full flex items-center justify-center mr-4 border border-blue-400/20">
+                                <i class="fab fa-github text-blue-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-white/50 text-sm">GitHub</p>
+                                <a href="https://github.com" target="_blank" class="font-medium text-white hover:text-blue-400 transition-colors">github.com/pulkitpunea</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-900/30 rounded-full flex items-center justify-center mr-4 border border-blue-400/20">
+                                <i class="fab fa-twitter text-blue-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-white/50 text-sm">Twitter</p>
+                                <a href="https://twitter.com" target="_blank" class="font-medium text-white hover:text-blue-400 transition-colors">@pulkitpunea</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form class="glass-effect p-8 rounded-lg">
+                        <div class="mb-6">
+                            <label for="name" class="block text-white/80 font-medium mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 rounded-lg focus:outline-none">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-white/80 font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 rounded-lg focus:outline-none">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-white/80 font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 rounded-lg focus:outline-none">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-white/80 font-medium mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg focus:outline-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold gradient-text">Pulkit Punea</a>
+                    <p class="mt-2 text-white/50">Building the future, one line of code at a time.</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-white/50 hover:text-blue-400 transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-white/50 hover:text-blue-400 transition-colors">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-white/50 hover:text-blue-400 transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-white/50 hover:text-blue-400 transition-colors">
+                        <i class="fab fa-dev text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 mt-8 pt-8 text-center md:text-left">
+                <p class="text-white/50 text-sm">© 2023 Pulkit Punea. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Add shadow to navbar on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+        
+        // Animation for project cards
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+                card.style.boxShadow = '0 10px 25px rgba(0, 210, 255, 0.1)';
+                card.style.borderColor = 'rgba(0, 210, 255, 0.3)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+                card.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+            });
+        });
+    </script>
+</body>
+</html>
