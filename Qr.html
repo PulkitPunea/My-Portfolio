@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRGen Pro | Sleek QR Code Generator</title>
+    <meta name="description" content="Generate beautiful, customizable QR codes instantly. Free, fast, and easy to use.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: "#f0f9ff",
+                            100: "#e0f2fe",
+                            500: "#0ea5e9",
+                            600: "#0284c7",
+                            700: "#0369a1",
+                        },
+                        dark: {
+                            50: "#f8fafc",
+                            100: "#f1f5f9",
+                            800: "#1e293b",
+                            900: "#0f172a",
+                        }
+                    },
+                    fontFamily: {
+                        "inter": ["Inter", "sans-serif"]
+                    },
+                    animation: {
+                        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                        "fade-in": "fadeIn 0.5s ease-in-out",
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            "0%": { opacity: "0", transform: "translateY(10px)" },
+                            "100%": { opacity: "1", transform: "translateY(0)" }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .qr-preview {
+            transition: all 0.3s ease;
+        }
+        .qr-preview:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        /* ADDED: Ensure QR code images fit nicely */
+        #qr-output img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-dark-50 to-dark-100 font-inter">
+    <header class="sticky top-0 z-50 glass-effect shadow-sm">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center">
+                        <i class="fas fa-qrcode text-white text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-dark-900">QRGen<span class="text-primary-600">Pro</span></span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-dark-700 hover:text-primary-600 font-medium transition-colors" onclick="event.preventDefault(); scrollToSection('features')">Features</a>
+                    <a href="#" class="text-dark-700 hover:text-primary-600 font-medium transition-colors" onclick="event.preventDefault(); scrollToSection('how-it-works')">How It Works</a>
+                    <a href="#" class="text-dark-700 hover:text-primary-600 font-medium transition-colors" onclick="event.preventDefault(); scrollToSection('pricing')">Pricing</a>
+                    <a href="#" class="text-dark-700 hover:text-primary-600 font-medium transition-colors" onclick="event.preventDefault(); scrollToSection('contact')">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 text-primary-600 hover:text-primary-700 font-medium transition-colors">
+                        Sign In
+                    </button>
+                    <button class="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container mx-auto px-4 py-12 md:py-20">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl md:text-6xl font-bold text-dark-900 mb-6">
+                        Generate <span class="gradient-text bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">Beautiful QR Codes</span> Instantly
+                    </h1>
+                    <p class="text-xl text-dark-600 max-w-3xl mx-auto mb-10">
+                        Create stunning, customizable QR codes for websites, contact info, WiFi, and more. Free, fast, and no registration required.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-16">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-dark-700 font-medium mb-2">Enter URL or Text</label>
+                                <div class="relative">
+                                    <input 
+                                        type="text" 
+                                        id="qr-input" 
+                                        placeholder="https://example.com or any text..." 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                                        value="https://github.com/PulkitPunea"
+                                    >
+                                    <div class="absolute right-3 top-3">
+                                        <i class="fas fa-link text-gray-400"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-dark-700 font-medium mb-2">Customize QR Code</label>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm text-dark-600 mb-1">Color</label>
+                                        <input type="color" id="qr-color" value="#0ea5e9" class="w-full h-10 cursor-pointer rounded">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm text-dark-600 mb-1">Size</label>
+                                        <select id="qr-size" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                                            <option value="200">Small (200x200)</option>
+                                            <option value="300" selected>Medium (300x300)</option>
+                                            <option value="400">Large (400x400)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-dark-700 font-medium mb-2">Add Logo (Optional)</label>
+                                <div class="flex items-center space-x-4">
+                                    <label class="flex-1">
+                                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-primary-500 transition-colors">
+                                            <i class="fas fa-cloud-upload-alt text-gray-400 text-2xl mb-2"></i>
+                                            <p class="text-sm text-dark-600">Click to upload logo</p>
+                                            <p class="text-xs text-gray-500">Feature coming soon</p>
+                                        </div>
+                                        <input type="file" class="hidden" accept="image/*" disabled>
+                                    </label>
+                                    <div class="w-16 h-16 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+                                        <i class="fas fa-image text-gray-400"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pt-4">
+                                <button id="generate-btn" class="w-full gradient-bg text-white py-3 rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center justify-center space-x-2">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>Generate QR Code</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-dark-700 font-medium mb-2">QR Code Preview</label>
+                                <div class="qr-preview bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center justify-center">
+                                    <div id="qr-preview" class="mb-4 p-4 bg-white rounded-lg flex items-center justify-center min-h-[250px]">
+                                       </div>
+                                    <div class="text-center">
+                                        <p class="text-sm text-dark-600 mb-2">Scan this QR code with your phone camera</p>
+                                        <div class="flex items-center justify-center space-x-2 text-gray-500">
+                                            <i class="fas fa-mobile-alt"></i>
+                                            <span class="text-sm">Point your camera at the code</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <button id="download-png" class="py-3 bg-gray-100 text-dark-700 rounded-lg font-medium hover:bg-gray-200 transition-colors flex items-center justify-center space-x-2">
+                                    <i class="fas fa-download"></i>
+                                    <span>Download PNG</span>
+                                </button>
+                                <button id="download-svg" class="py-3 bg-primary-50 text-primary-700 rounded-lg font-medium hover:bg-primary-100 transition-colors flex items-center justify-center space-x-2">
+                                    <i class="fas fa-file-download"></i>
+                                    <span>Download SVG</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <section id="features" class="mb-20">
+                    <h2 class="text-3xl font-bold text-center text-dark-900 mb-12">Why Choose QRGen Pro?</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 rounded-lg gradient-bg flex items-center justify-center mb-4">
+                                <i class="fas fa-bolt text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-dark-900 mb-2">Lightning Fast</h3>
+                            <p class="text-dark-600">Generate QR codes in milliseconds with our optimized processing engine.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 rounded-lg gradient-bg flex items-center justify-center mb-4">
+                                <i class="fas fa-palette text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-dark-900 mb-2">Fully Customizable</h3>
+                            <p class="text-dark-600">Choose colors, add logos, and customize every aspect of your QR code.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 rounded-lg gradient-bg flex items-center justify-center mb-4">
+                                <i class="fas fa-shield-alt text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-dark-900 mb-2">Secure & Private</h3>
+                            <p class="text-dark-600">Your data never leaves your browser. All processing happens locally.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="how-it-works" class="mb-20">
+                    <h2 class="text-3xl font-bold text-center text-dark-900 mb-12">How It Works</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white font-bold text-xl">1</span>
+                            </div>
+                            <h3 class="font-semibold text-dark-900 mb-2">Enter Content</h3>
+                            <p class="text-dark-600 text-sm">Type your URL, text, or contact information</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white font-bold text-xl">2</span>
+                            </div>
+                            <h3 class="font-semibold text-dark-900 mb-2">Customize Design</h3>
+                            <p class="text-dark-600 text-sm">Choose colors, size, and add your logo</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white font-bold text-xl">3</span>
+                            </div>
+                            <h3 class="font-semibold text-dark-900 mb-2">Generate QR</h3>
+                            <p class="text-dark-600 text-sm">Click generate to create your QR code instantly</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white font-bold text-xl">4</span>
+                            </div>
+                            <h3 class="font-semibold text-dark-900 mb-2">Download & Use</h3>
+                            <p class="text-dark-600 text-sm">Download in PNG or SVG format and start using</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="bg-gradient-to-r from-primary-600 to-purple-600 rounded-2xl p-8 mb-20 text-white">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                        <div>
+                            <div class="text-3xl font-bold mb-2">500K+</div>
+                            <div class="text-primary-100">QR Codes Generated</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold mb-2">99.9%</div>
+                            <div class="text-primary-100">Uptime</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold mb-2">150+</div>
+                            <div class="text-primary-100">Countries</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold mb-2">24/7</div>
+                            <div class="text-primary-100">Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="bg-dark-900 text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center">
+                            <i class="fas fa-qrcode text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold">QRGen<span class="text-primary-500">Pro</span></span>
+                    </div>
+                    <p class="text-gray-400">The most advanced QR code generator on the web. Free, fast, and beautiful.</p>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="event.preventDefault()">Features</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="event.preventDefault()">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="event.preventDefault()">API</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="event.preventDefault()">Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="event.preventDefault()">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="event.preventDefault()">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="event.preventDefault()">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="event.preventDefault()">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Stay Updated</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for updates</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 rounded-l-lg text-dark-900">
+                        <button class="bg-primary-600 px-4 py-2 rounded-r-lg hover:bg-primary-700 transition-colors">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="event.preventDefault()"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="event.preventDefault()"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="event.preventDefault()"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="event.preventDefault()"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 QRGen Pro. All rights reserved. | <a href="#" class="hover:text-white transition-colors" onclick="event.preventDefault()">Privacy Policy</a> | <a href="#" class="hover:text-white transition-colors" onclick="event.preventDefault()">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const qrInput = document.getElementById("qr-input");
+        const qrColor = document.getElementById("qr-color");
+        const qrSize = document.getElementById("qr-size");
+        const generateBtn = document.getElementById("generate-btn");
+        const qrPreview = document.getElementById("qr-preview");
+        const downloadPngBtn = document.getElementById("download-png");
+        const downloadSvgBtn = document.getElementById("download-svg");
+
+        // Navigation function
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        // Generate QR Code Function
+        function generateQRPreview() {
+            const content = qrInput.value.trim();
+            const color = qrColor.value;
+            const size = parseInt(qrSize.value);
+            
+            if (!content) {
+                alert("Please enter some content to generate a QR code");
+                return;
+            }
+
+            // Clear previous content
+            qrPreview.innerHTML = "";
+
+            // Create a wrapper div to hold the QR code and apply styling
+            const qrContainer = document.createElement("div");
+            qrContainer.id = "qr-output";
+            qrPreview.appendChild(qrContainer);
+
+            // Generate the QR code using the library
+            new QRCode(qrContainer, {
+                text: content,
+                width: size,
+                height: size,
+                colorDark : color,
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        }
+
+        // Download PNG Function
+        function downloadPNG() {
+            const qrOutput = document.getElementById("qr-output");
+            // The library generates an IMG tag inside our container
+            const img = qrOutput ? qrOutput.querySelector("img") : null;
+            
+            if (!img || !img.src) {
+                alert("Please generate a QR code first");
+                return;
+            }
+
+            // Create a temporary link to trigger download
+            const link = document.createElement("a");
+            link.href = img.src;
+            link.download = "qrcode.png";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function downloadSVG() {
+           alert("SVG download requires a different library module. Try PNG for now!");
+        }
+
+        // Event Listeners
+        generateBtn.addEventListener("click", generateQRPreview);
+        downloadPngBtn.addEventListener("click", downloadPNG);
+        downloadSvgBtn.addEventListener("click", downloadSVG);
+
+        // Initialize on load
+        window.addEventListener("DOMContentLoaded", () => {
+            generateQRPreview();
+            
+            // Add smooth scrolling
+            document.querySelectorAll("a[href^='#']").forEach(anchor => {
+                anchor.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    const href = this.getAttribute("href");
+                    if (href !== "#") {
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({ behavior: "smooth" });
+                        }
+                    }
+                });
+            });
+        });
+
+        // Form validation
+        qrInput.addEventListener("input", function() {
+            if (this.value.length > 1000) {
+                this.value = this.value.substring(0, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
