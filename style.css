@@ -182,7 +182,7 @@ body {
 @keyframes spin { to { transform: rotate(360deg); } }
 .in-app { font-size: 0.65rem; color: var(--text-secondary); }
 
-.education-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.education-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
 .review-card { background: var(--card-bg); padding: 20px; border-radius: 12px; }
 .review-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
 .stars { color: #ff9500; font-size: 1.1rem; letter-spacing: 2px;}
