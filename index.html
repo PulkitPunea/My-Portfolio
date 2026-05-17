@@ -4,159 +4,9 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Pulkit Kumar | Dev Portfolio</title>
+<link rel="stylesheet" href="style.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --blue:#0A84FF;--indigo:#5856D6;--teal:#30B0C7;--green:#34C759;--orange:#FF9F0A;--red:#FF3B30;
-  --bg:#f2f2f7;--surface:#fff;--surface2:rgba(118,118,128,.08);
-  --text:#1c1c1e;--text2:#3c3c43;--text3:#6c6c70;
-  --sep:rgba(60,60,67,.12);--sep2:rgba(60,60,67,.06);
-  --modal-bg:rgba(0,0,0,.45);
-  --radius:16px;--radius2:12px;--radius3:20px;
-}
-[data-theme="dark"]{
-  --bg:#000;--surface:#1c1c1e;--surface2:rgba(255,255,255,.08);
-  --text:#fff;--text2:#ebebf5cc;--text3:#ebebf566;
-  --sep:rgba(255,255,255,.12);--sep2:rgba(255,255,255,.06);
-  --modal-bg:rgba(0,0,0,.7);
-}
-html{scroll-behavior:smooth}
-body{font-family:"Syne",system-ui,sans-serif;background:var(--bg);color:var(--text);transition:background .3s,color .3s;overflow-x:hidden}
-nav{background:var(--bg);border-bottom:.5px solid var(--sep);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-.nav-left{display:flex;align-items:center;gap:4px}
-.nav-tab{font-size:13px;font-weight:700;color:var(--text3);padding:7px 13px;border-radius:10px;cursor:pointer;border:none;background:none;font-family:"Syne",sans-serif;transition:all .2s}
-.nav-tab.active{color:var(--blue);background:rgba(10,132,255,.1)}
-.nav-right{display:flex;align-items:center;gap:8px}
-.search-wrap{position:relative}
-.search-input{background:var(--surface2);border:none;border-radius:10px;padding:7px 12px 7px 32px;font-size:13px;color:var(--text);font-family:"Syne",sans-serif;width:160px;outline:none;transition:width .3s}
-.search-input:focus{width:220px;background:var(--surface);box-shadow:0 0 0 2px rgba(10,132,255,.3)}
-.search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text3);pointer-events:none}
-.theme-btn{background:none;border:none;cursor:pointer;font-size:18px;padding:4px 8px;border-radius:8px;transition:background .2s;color:var(--text)}
-.theme-btn:hover{background:var(--surface2)}
-.seeking-banner{background:linear-gradient(90deg,#1A6B3C,#0A84FF);padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;cursor:pointer;position:relative;overflow:hidden}
-.seeking-banner::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.04) 40px,rgba(255,255,255,.04) 41px)}
-.banner-pill{background:rgba(255,255,255,.2);color:#fff;font-size:11px;font-weight:700;font-family:"JetBrains Mono",monospace;padding:3px 10px;border-radius:20px;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0}
-.banner-text{color:#fff;font-size:13px;font-weight:700;letter-spacing:-.01em}
-.banner-arrow{color:rgba(255,255,255,.7);font-size:14px;margin-left:4px}
-.hero{padding:52px 24px 36px;max-width:860px;margin:0 auto}
-.hero-top{display:flex;align-items:center;gap:24px;margin-bottom:20px}
-.hero-avatar{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid var(--blue);box-shadow:0 0 0 4px rgba(10,132,255,.15);flex-shrink:0;opacity:0;animation:fadeUp .5s .1s ease forwards}
-.hero-eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px;opacity:0;animation:fadeUp .5s .15s ease forwards}
-.hero-name{font-size:clamp(42px,7vw,72px);font-weight:800;line-height:.95;letter-spacing:-.05em;color:var(--text);opacity:0;animation:fadeUp .5s .2s ease forwards}
-.hero-name .grad{background:linear-gradient(135deg,#1A6B3C,var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-role{margin-top:14px;font-size:17px;color:var(--text3);font-weight:400;letter-spacing:-.01em;height:24px;opacity:0;animation:fadeUp .5s .3s ease forwards}
-.typewriter{color:var(--blue);font-weight:700;border-right:2px solid var(--blue);padding-right:2px}
-.hero-stats{display:flex;gap:28px;margin-top:28px;opacity:0;animation:fadeUp .5s .4s ease forwards}
-.stat{text-align:center}
-.stat-num{font-size:28px;font-weight:800;letter-spacing:-.04em;color:var(--text);line-height:1}
-.stat-label{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:3px}
-.stat-div{width:.5px;background:var(--sep);height:40px;align-self:center}
-.hero-badges{margin-top:22px;display:flex;flex-wrap:wrap;gap:7px;opacity:0;animation:fadeUp .5s .5s ease forwards}
-.badge{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:500;padding:5px 11px;border-radius:20px;border:.5px solid;letter-spacing:.02em;white-space:nowrap}
-.b-blue{color:#0A84FF;border-color:rgba(10,132,255,.25);background:rgba(10,132,255,.07)}
-.b-indigo{color:#5856D6;border-color:rgba(88,86,214,.25);background:rgba(88,86,214,.07)}
-.b-teal{color:#30B0C7;border-color:rgba(48,176,199,.25);background:rgba(48,176,199,.07)}
-.b-green{color:#1A6B3C;border-color:rgba(26,107,60,.25);background:rgba(26,107,60,.07)}
-.section{max-width:860px;margin:0 auto;padding:0 24px 44px}
-.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px}
-.section-title{font-size:22px;font-weight:800;letter-spacing:-.04em}
-.section-more{font-size:14px;color:var(--blue);font-weight:700;cursor:pointer;border:none;background:none;font-family:"Syne",sans-serif}
-.featured-card{border-radius:var(--radius3);overflow:hidden;background:var(--surface);border:.5px solid var(--sep);cursor:pointer;transition:transform .25s,box-shadow .25s;opacity:0;animation:fadeUp .5s .3s ease forwards}
-.featured-card:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.14)}
-.featured-banner{height:210px;display:flex;align-items:flex-end;padding:22px;position:relative;overflow:hidden}
-.fb-0{background:linear-gradient(135deg,#0d1a0d,#0d3320,#1A6B3C,#0A84FF)}
-.featured-icon{width:68px;height:68px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:30px;background:rgba(255,255,255,.12);border:.5px solid rgba(255,255,255,.2);flex-shrink:0;backdrop-filter:blur(10px)}
-.featured-text{padding-left:16px;flex:1}
-.f-cat{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:500;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.1em}
-.f-title{font-size:22px;font-weight:800;color:#fff;letter-spacing:-.04em;line-height:1.05;margin-top:3px}
-.f-sub{font-size:12px;color:rgba(255,255,255,.55);margin-top:5px}
-.featured-body{padding:16px 20px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
-.featured-desc{font-size:14px;color:var(--text2);line-height:1.55;flex:1;font-weight:400}
-.get-btn{background:rgba(10,132,255,.1);color:var(--blue);font-size:13px;font-weight:700;font-family:"Syne",sans-serif;padding:7px 20px;border-radius:20px;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s;letter-spacing:-.01em;text-decoration:none;display:inline-flex;align-items:center}
-.get-btn:hover{background:var(--blue);color:#fff}
-.apps-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5px;background:var(--sep);border-radius:var(--radius2);overflow:hidden;border:.5px solid var(--sep);opacity:0;animation:fadeUp .5s .4s ease forwards}
-.app-row{background:var(--surface);padding:13px 15px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background .15s;text-decoration:none}
-.app-row:hover{background:rgba(10,132,255,.04)}
-.app-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;position:relative}
-.ai-0{background:linear-gradient(135deg,#0d1a0d,#1A6B3C)}
-.ai-1{background:linear-gradient(135deg,#003d44,#30B0C7)}
-.ai-2{background:linear-gradient(135deg,#7a2500,#FF6B35)}
-.ai-3{background:linear-gradient(135deg,#1a0d3a,#5856D6)}
-.new-dot{position:absolute;top:-3px;right:-3px;width:10px;height:10px;background:var(--red);border-radius:50%;border:2px solid var(--bg)}
-.app-info{flex:1;min-width:0}
-.app-name{font-size:13px;font-weight:700;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text)}
-.app-tag{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--text3);margin-top:2px}
-.app-stars{display:flex;gap:1px;margin-top:4px}
-.star{color:#FF9F0A;font-size:10px}
-.get-sm{background:rgba(10,132,255,.1);color:var(--blue);font-size:12px;font-weight:700;font-family:"Syne",sans-serif;padding:5px 14px;border-radius:14px;border:none;cursor:pointer;flex-shrink:0;transition:all .15s;white-space:nowrap;text-decoration:none}
-.get-sm:hover{background:var(--blue);color:#fff}
-.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;opacity:0;animation:fadeUp .5s .35s ease forwards}
-.skill-card{background:var(--surface);border:.5px solid var(--sep);border-radius:var(--radius2);padding:14px 16px}
-.skill-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
-.skill-name{font-size:13px;font-weight:700;letter-spacing:-.01em}
-.skill-pct{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--text3)}
-.skill-track{height:6px;background:var(--surface2);border-radius:3px;overflow:hidden}
-.skill-fill{height:100%;border-radius:3px;width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
-.sf-green{background:linear-gradient(90deg,#1A6B3C,var(--blue))}
-.sf-teal{background:linear-gradient(90deg,var(--teal),#34C759)}
-.sf-indigo{background:var(--indigo)}
-.sf-orange{background:linear-gradient(90deg,var(--orange),var(--red))}
-.sf-blue{background:linear-gradient(90deg,var(--blue),var(--indigo))}
-.changelog{background:var(--surface);border:.5px solid var(--sep);border-radius:var(--radius2);overflow:hidden;opacity:0;animation:fadeUp .5s .35s ease forwards}
-.cl-row{padding:16px 18px;border-bottom:.5px solid var(--sep2);display:flex;gap:14px;align-items:flex-start}
-.cl-row:last-child{border-bottom:none}
-.cl-ver{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:500;color:#1A6B3C;background:rgba(26,107,60,.08);border:.5px solid rgba(26,107,60,.2);padding:3px 9px;border-radius:10px;white-space:nowrap;flex-shrink:0;margin-top:2px}
-.cl-content{}
-.cl-date{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--text3);margin-bottom:4px}
-.cl-title{font-size:14px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px}
-.cl-desc{font-size:12px;color:var(--text2);line-height:1.5;font-weight:400}
-.reviews-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;opacity:0;animation:fadeUp .5s .35s ease forwards}
-.review-card{background:var(--surface);border:.5px solid var(--sep);border-radius:var(--radius2);padding:16px}
-.review-stars{display:flex;gap:2px;margin-bottom:8px}
-.review-text{font-size:13px;color:var(--text2);line-height:1.5;font-weight:400;margin-bottom:10px;font-style:italic}
-.review-author{display:flex;align-items:center;gap:8px}
-.review-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
-.ra-blue{background:rgba(10,132,255,.12);color:var(--blue)}
-.ra-indigo{background:rgba(88,86,214,.12);color:var(--indigo)}
-.ra-teal{background:rgba(48,176,199,.12);color:var(--teal)}
-.ra-green{background:rgba(26,107,60,.12);color:#1A6B3C}
-.review-name{font-size:12px;font-weight:700;letter-spacing:-.01em}
-.review-role{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--text3)}
-.edu-list{display:flex;flex-direction:column;gap:10px;opacity:0;animation:fadeUp .5s .35s ease forwards}
-.edu-card{background:var(--surface);border:.5px solid var(--sep);border-radius:var(--radius2);padding:16px 18px;display:flex;align-items:center;gap:14px}
-.edu-dot{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#1A6B3C,var(--blue));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.edu-title{font-size:14px;font-weight:700;letter-spacing:-.02em}
-.edu-sub{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--text3);margin-top:3px}
-.edu-gpa{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:14px;font-weight:500;color:#1A6B3C;white-space:nowrap}
-.cert-list{display:flex;flex-direction:column;gap:10px;opacity:0;animation:fadeUp .5s .35s ease forwards}
-.cert-card{background:var(--surface);border:.5px solid var(--sep);border-radius:var(--radius2);padding:14px 18px;display:flex;align-items:center;gap:14px}
-.cert-dot{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#FF9F0A,#FF3B30);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.cert-title{font-size:13px;font-weight:700;letter-spacing:-.02em;line-height:1.3}
-.cert-sub{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--text3);margin-top:3px}
-.cert-badge{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:500;color:#FF9F0A;background:rgba(255,159,10,.1);border:.5px solid rgba(255,159,10,.3);padding:3px 8px;border-radius:8px;white-space:nowrap}
-.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;opacity:0;animation:fadeUp .5s .35s ease forwards}
-.info-card{background:var(--surface);border:.5px solid var(--sep);border-radius:var(--radius2);padding:14px 16px}
-.info-label{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
-.info-value{font-size:13px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.35}
-.no-results{text-align:center;padding:40px 20px;color:var(--text3);font-size:14px;display:none}
-footer{background:var(--surface);border-top:.5px solid var(--sep);padding:28px 24px;text-align:center}
-.footer-name{font-size:20px;font-weight:800;letter-spacing:-.04em;margin-bottom:6px}
-.footer-sub{font-size:13px;color:var(--text3);margin-bottom:18px;font-family:"JetBrains Mono",monospace}
-.footer-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-.footer-link{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--blue);text-decoration:none;border:.5px solid rgba(10,132,255,.3);padding:7px 16px;border-radius:10px;transition:all .15s;font-weight:500}
-.footer-link:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
-.footer-copy{font-size:11px;color:var(--text3);font-family:"JetBrains Mono",monospace}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.typewriter{animation:blink .8s infinite}
-@media(max-width:580px){
-  .apps-grid,.skills-grid,.reviews-grid,.info-grid{grid-template-columns:1fr}
-  .hero-stats{gap:16px}
-  .hero-top{flex-direction:column;align-items:flex-start}
-}
-</style>
 </head>
 <body>
 
@@ -200,11 +50,11 @@ footer{background:var(--surface);border-top:.5px solid var(--sep);padding:28px 2
     <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Yrs Coding</div></div>
   </div>
   <div class="hero-badges">
-    <span class="badge b-green">Unreal Engine 4.27</span>
-    <span class="badge b-green">Blueprint Scripting</span>
-    <span class="badge b-blue">C++ Plugin Dev</span>
-    <span class="badge b-blue">Qt Quick 3D</span>
-    <span class="badge b-indigo">YOLOv8 · Computer Vision</span>
+    <span class="badge b-blue">Unreal Engine 4.27</span>
+    <span class="badge b-blue">Blueprint Scripting</span>
+    <span class="badge b-indigo">C++ Plugin Dev</span>
+    <span class="badge b-indigo">Qt Quick 3D</span>
+    <span class="badge b-teal">YOLOv8 · Computer Vision</span>
     <span class="badge b-teal">Android · Mobile Optimization</span>
     <span class="badge b-blue">Git · GitHub</span>
     <span class="badge b-indigo">Procedural Generation</span>
@@ -213,7 +63,7 @@ footer{background:var(--surface);border-top:.5px solid var(--sep);padding:28px 2
 
 <div class="section" id="apps">
   <div class="section-header"><div class="section-title">Featured</div></div>
-  <div class="featured-card" onclick="window.open('https://github.com/PulkitPunea','_blank')">
+  <div class="featured-card" onclick="window.location.href='project-vehicle-simulator.html'">
     <div class="featured-banner fb-0">
       <div class="featured-icon">🚗</div>
       <div class="featured-text">
@@ -224,7 +74,7 @@ footer{background:var(--surface);border-top:.5px solid var(--sep);padding:28px 2
     </div>
     <div class="featured-body">
       <div class="featured-desc">A production 3D vehicle simulator deployed on Android via Google Play. Built using the professional UE4 workflow — C++ plugins for vehicle physics and procedural environments, full Blueprint scripting for game logic, events, and touch-input handling.</div>
-      <a class="get-btn" href="https://github.com/PulkitPunea" target="_blank" onclick="event.stopPropagation()">GitHub ↗</a>
+      <button class="get-btn" id="get-featured" onclick="handleGet(event,'get-featured','project-vehicle-simulator.html')">GET</button>
     </div>
   </div>
 </div>
@@ -235,42 +85,42 @@ footer{background:var(--surface);border-top:.5px solid var(--sep);padding:28px 2
     <button class="section-more" onclick="document.getElementById('searchInput').focus()">Search</button>
   </div>
   <div class="apps-grid" id="appsGrid">
-    <a class="app-row" href="https://github.com/PulkitPunea" target="_blank" data-tags="unreal c++ android 3d vehicle simulator blueprint">
+    <div class="app-row" data-tags="unreal c++ android 3d vehicle simulator blueprint" onclick="handleGet(event,'get-0','project-vehicle-simulator.html')">
       <div class="app-icon ai-0"><span style="font-size:22px">🚗</span></div>
       <div class="app-info">
         <div class="app-name">Android Vehicle Simulator</div>
         <div class="app-tag">UE4 · C++ Plugins · Blueprint · Android</div>
         <div class="app-stars">★★★★★</div>
       </div>
-      <span class="get-sm">View ↗</span>
-    </a>
-    <a class="app-row" href="https://github.com/PulkitPunea/3d-Model-Viewer" target="_blank" data-tags="qt 3d model viewer qml c++ rendering">
+      <button class="get-sm" id="get-0" onclick="handleGet(event,'get-0','project-vehicle-simulator.html')">GET</button>
+    </div>
+    <div class="app-row" data-tags="qt 3d model viewer qml c++ rendering" onclick="handleGet(event,'get-1','project-3d-model-viewer.html')">
       <div class="app-icon ai-3" style="position:relative"><span style="font-size:22px">📦</span><div class="new-dot"></div></div>
       <div class="app-info">
         <div class="app-name">3D Model Viewer</div>
         <div class="app-tag">Qt 6.7 · Qt Quick 3D · QML · C++</div>
         <div class="app-stars">★★★★★</div>
       </div>
-      <span class="get-sm">View ↗</span>
-    </a>
-    <a class="app-row" href="https://github.com/PulkitPunea/RT-FaceMask-Detection" target="_blank" data-tags="face mask detection real time ml opencv yolov8 python">
+      <button class="get-sm" id="get-1" onclick="handleGet(event,'get-1','project-3d-model-viewer.html')">GET</button>
+    </div>
+    <div class="app-row" data-tags="face mask detection real time ml opencv yolov8 python" onclick="handleGet(event,'get-2','project-facemask.html')">
       <div class="app-icon ai-2"><span style="font-size:22px">😷</span></div>
       <div class="app-info">
         <div class="app-name">RT FaceMask Detection</div>
         <div class="app-tag">YOLOv8m · OpenCV · Python · CustomTkinter</div>
         <div class="app-stars">★★★★★</div>
       </div>
-      <span class="get-sm">View ↗</span>
-    </a>
-    <a class="app-row" href="https://github.com/PulkitPunea/Brain-Tumor-Detection-Yolov8n" target="_blank" data-tags="brain tumor detection yolo ai ml python medical">
+      <button class="get-sm" id="get-2" onclick="handleGet(event,'get-2','project-facemask.html')">GET</button>
+    </div>
+    <div class="app-row" data-tags="brain tumor detection yolo ai ml python medical" onclick="handleGet(event,'get-3','project-brain-tumor.html')">
       <div class="app-icon ai-1"><span style="font-size:22px">🧠</span></div>
       <div class="app-info">
         <div class="app-name">Brain Tumor Detection</div>
         <div class="app-tag">YOLOv8n · Ultralytics · Python</div>
         <div class="app-stars">★★★★★</div>
       </div>
-      <span class="get-sm">View ↗</span>
-    </a>
+      <button class="get-sm" id="get-3" onclick="handleGet(event,'get-3','project-brain-tumor.html')">GET</button>
+    </div>
   </div>
   <div class="no-results" id="noResults">No projects match your search.</div>
 </div>
@@ -278,152 +128,43 @@ footer{background:var(--surface);border-top:.5px solid var(--sep);padding:28px 2
 <div class="section">
   <div class="section-header"><div class="section-title">Skills</div></div>
   <div class="skills-grid" id="skillsGrid">
-    <div class="skill-card">
-      <div class="skill-header"><span class="skill-name">Unreal Engine 4 / Blueprint</span><span class="skill-pct">85%</span></div>
-      <div class="skill-track"><div class="skill-fill sf-green" data-w="85"></div></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-header"><span class="skill-name">C++ / Plugin Dev</span><span class="skill-pct">88%</span></div>
-      <div class="skill-track"><div class="skill-fill sf-blue" data-w="88"></div></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-header"><span class="skill-name">Qt Quick 3D / QML</span><span class="skill-pct">75%</span></div>
-      <div class="skill-track"><div class="skill-fill sf-indigo" data-w="75"></div></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-header"><span class="skill-name">Computer Vision / YOLOv8</span><span class="skill-pct">72%</span></div>
-      <div class="skill-track"><div class="skill-fill sf-orange" data-w="72"></div></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-header"><span class="skill-name">System Architecture / OOP</span><span class="skill-pct">82%</span></div>
-      <div class="skill-track"><div class="skill-fill sf-green" data-w="82"></div></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-header"><span class="skill-name">Git / GitHub</span><span class="skill-pct">85%</span></div>
-      <div class="skill-track"><div class="skill-fill sf-teal" data-w="85"></div></div>
-    </div>
+    <div class="skill-card"><div class="skill-header"><span class="skill-name">Unreal Engine 4 / Blueprint</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill sf-blue" data-w="85"></div></div></div>
+    <div class="skill-card"><div class="skill-header"><span class="skill-name">C++ / Plugin Dev</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill sf-blue" data-w="88"></div></div></div>
+    <div class="skill-card"><div class="skill-header"><span class="skill-name">Qt Quick 3D / QML</span><span class="skill-pct">75%</span></div><div class="skill-track"><div class="skill-fill sf-indigo" data-w="75"></div></div></div>
+    <div class="skill-card"><div class="skill-header"><span class="skill-name">Computer Vision / YOLOv8</span><span class="skill-pct">72%</span></div><div class="skill-track"><div class="skill-fill sf-orange" data-w="72"></div></div></div>
+    <div class="skill-card"><div class="skill-header"><span class="skill-name">System Architecture / OOP</span><span class="skill-pct">82%</span></div><div class="skill-track"><div class="skill-fill sf-blue" data-w="82"></div></div></div>
+    <div class="skill-card"><div class="skill-header"><span class="skill-name">Git / GitHub</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill sf-teal" data-w="85"></div></div></div>
   </div>
 </div>
 
 <div class="section">
   <div class="section-header"><div class="section-title">What's New</div></div>
   <div class="changelog">
-    <div class="cl-row">
-      <span class="cl-ver">v26.05</span>
-      <div class="cl-content">
-        <div class="cl-date">May 2026</div>
-        <div class="cl-title">Completed UE5 C++ Game Development Course — Udemy</div>
-        <div class="cl-desc">Finished 26.5-hour course by GameDev.tv covering UE5 C++ architecture, Actor/Component model, collision, AI behaviour, and gameplay mechanics.</div>
-      </div>
-    </div>
-    <div class="cl-row">
-      <span class="cl-ver">v25.25</span>
-      <div class="cl-content">
-        <div class="cl-date">2025 – Present</div>
-        <div class="cl-title">MCA enrolled at Amity University, Noida</div>
-        <div class="cl-desc">Advanced coursework in system architecture, AI/ML, and software engineering. GPA: 8.04.</div>
-      </div>
-    </div>
-    <div class="cl-row">
-      <span class="cl-ver">v24.24</span>
-      <div class="cl-content">
-        <div class="cl-date">2024</div>
-        <div class="cl-title">Shipped 3D Model Viewer — Qt 6.7 · Qt Quick 3D · QML · C++</div>
-        <div class="cl-desc">Built desktop 3D viewer with QML scene layer and C++ ModelManager backend. Used Balsam.exe for FBX/OBJ/glTF → .mesh conversion.</div>
-      </div>
-    </div>
-    <div class="cl-row">
-      <span class="cl-ver">v23.24</span>
-      <div class="cl-content">
-        <div class="cl-date">2024</div>
-        <div class="cl-title">Deployed RT FaceMask Detection + Brain Tumor YOLOv8</div>
-        <div class="cl-desc">Two real-time computer vision systems — YOLOv8m with threaded OpenCV pipeline and CustomTkinter GUI; YOLOv8n for medical MRI tumor localisation.</div>
-      </div>
-    </div>
-    <div class="cl-row">
-      <span class="cl-ver">v23.23</span>
-      <div class="cl-content">
-        <div class="cl-date">2023</div>
-        <div class="cl-title">Shipped Android Vehicle Simulator on Google Play — UE4 + C++</div>
-        <div class="cl-desc">C++ plugins for vehicle physics + procedural generation, full Blueprint game logic, touch-input handling, memory-efficient asset streaming.</div>
-      </div>
-    </div>
-    <div class="cl-row">
-      <span class="cl-ver">v23.23b</span>
-      <div class="cl-content">
-        <div class="cl-date">April 2023</div>
-        <div class="cl-title">Completed 46hr C++ Course — Udemy (Buchalka Academy)</div>
-        <div class="cl-desc">Comprehensive modern C++ — OOP, templates, STL, memory management, lambdas. Foundation for all UE4 plugin development.</div>
-      </div>
-    </div>
-    <div class="cl-row">
-      <span class="cl-ver">v22.22</span>
-      <div class="cl-content">
-        <div class="cl-date">2022</div>
-        <div class="cl-title">B.Sc. Computer Science — Graphic Era University</div>
-        <div class="cl-desc">Graduated with 8.05 GPA. Foundations in data structures, algorithms, OOP, and computer graphics.</div>
-      </div>
-    </div>
+    <div class="cl-row"><span class="cl-ver">v26.05</span><div class="cl-content"><div class="cl-date">May 2026</div><div class="cl-title">Completed UE5 C++ Game Development Course — Udemy</div><div class="cl-desc">Finished 26.5-hour course by GameDev.tv covering UE5 C++ architecture, Actor/Component model, collision, AI behaviour, and gameplay mechanics.</div></div></div>
+    <div class="cl-row"><span class="cl-ver">v25.25</span><div class="cl-content"><div class="cl-date">2025 – Present</div><div class="cl-title">MCA enrolled at Amity University, Noida</div><div class="cl-desc">Advanced coursework in system architecture, AI/ML, and software engineering. GPA: 8.04.</div></div></div>
+    <div class="cl-row"><span class="cl-ver">v24.24</span><div class="cl-content"><div class="cl-date">2024</div><div class="cl-title">Shipped 3D Model Viewer — Qt 6.7 · Qt Quick 3D · QML · C++</div><div class="cl-desc">Built desktop 3D viewer with QML scene layer and C++ ModelManager backend. Used Balsam.exe for FBX/OBJ/glTF → .mesh conversion.</div></div></div>
+    <div class="cl-row"><span class="cl-ver">v23.24</span><div class="cl-content"><div class="cl-date">2024</div><div class="cl-title">Deployed RT FaceMask Detection + Brain Tumor YOLOv8</div><div class="cl-desc">Two real-time computer vision systems — YOLOv8m with threaded OpenCV pipeline and CustomTkinter GUI; YOLOv8n for medical MRI tumor localisation.</div></div></div>
+    <div class="cl-row"><span class="cl-ver">v23.23</span><div class="cl-content"><div class="cl-date">2023</div><div class="cl-title">Shipped Android Vehicle Simulator on Google Play — UE4 + C++</div><div class="cl-desc">C++ plugins for vehicle physics + procedural generation, full Blueprint game logic, touch-input handling, memory-efficient asset streaming.</div></div></div>
+    <div class="cl-row"><span class="cl-ver">v23.23b</span><div class="cl-content"><div class="cl-date">April 2023</div><div class="cl-title">Completed 46hr C++ Course — Udemy (Buchalka Academy)</div><div class="cl-desc">Comprehensive modern C++ — OOP, templates, STL, memory management, lambdas. Foundation for all UE4 plugin development.</div></div></div>
+    <div class="cl-row"><span class="cl-ver">v22.22</span><div class="cl-content"><div class="cl-date">2022</div><div class="cl-title">B.Sc. Computer Science — Graphic Era University</div><div class="cl-desc">Graduated with 8.05 GPA. Foundations in data structures, algorithms, OOP, and computer graphics.</div></div></div>
   </div>
 </div>
 
 <div class="section" id="about">
   <div class="section-header"><div class="section-title">Reviews</div></div>
   <div class="reviews-grid">
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <div class="review-text">"Strong grasp of UE4 architecture — the C++ plugin + Blueprint separation shows real professional awareness of how game studios actually work."</div>
-      <div class="review-author">
-        <div class="review-avatar ra-indigo">AP</div>
-        <div><div class="review-name">A. Prakash</div><div class="review-role">Professor, Amity University</div></div>
-      </div>
-    </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <div class="review-text">"The YOLOv8 brain tumor detection system showed remarkable precision. Strong understanding of real-time inference pipelines and ML deployment."</div>
-      <div class="review-author">
-        <div class="review-avatar ra-teal">RK</div>
-        <div><div class="review-name">R. Kumar</div><div class="review-role">AI Research Mentor</div></div>
-      </div>
-    </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <div class="review-text">"Rapid problem solver who ships clean, maintainable code under pressure. His 3D Model Viewer showed real mastery of Qt Quick 3D and asset management."</div>
-      <div class="review-author">
-        <div class="review-avatar ra-blue">MS</div>
-        <div><div class="review-name">M. Sharma</div><div class="review-role">Team Lead, GEU Project</div></div>
-      </div>
-    </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <div class="review-text">"Collaborative and deeply curious. His ability to connect C++ systems with Blueprint logic is exactly what game dev teams need from a junior developer."</div>
-      <div class="review-author">
-        <div class="review-avatar ra-green">SJ</div>
-        <div><div class="review-name">S. Jain</div><div class="review-role">Classmate & Collaborator</div></div>
-      </div>
-    </div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"Strong grasp of UE4 architecture — the C++ plugin + Blueprint separation shows real professional awareness of how game studios actually work."</div><div class="review-author"><div class="review-avatar ra-indigo">AP</div><div><div class="review-name">A. Prakash</div><div class="review-role">Professor, Amity University</div></div></div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"The YOLOv8 brain tumor detection system showed remarkable precision. Strong understanding of real-time inference pipelines and ML deployment."</div><div class="review-author"><div class="review-avatar ra-teal">RK</div><div><div class="review-name">R. Kumar</div><div class="review-role">AI Research Mentor</div></div></div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"Rapid problem solver who ships clean, maintainable code under pressure. His 3D Model Viewer showed real mastery of Qt Quick 3D and asset management."</div><div class="review-author"><div class="review-avatar ra-blue">MS</div><div><div class="review-name">M. Sharma</div><div class="review-role">Team Lead, GEU Project</div></div></div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"Collaborative and deeply curious. His ability to connect C++ systems with Blueprint logic is exactly what game dev teams need from a junior developer."</div><div class="review-author"><div class="review-avatar ra-indigo">SJ</div><div><div class="review-name">S. Jain</div><div class="review-role">Classmate & Collaborator</div></div></div></div>
   </div>
 </div>
 
 <div class="section">
   <div class="section-header"><div class="section-title">Education</div></div>
   <div class="edu-list">
-    <div class="edu-card">
-      <div class="edu-dot">🎓</div>
-      <div>
-        <div class="edu-title">Master of Computer Applications (MCA)</div>
-        <div class="edu-sub">Amity University, Noida · 2025 – Present</div>
-      </div>
-      <div class="edu-gpa">8.04 GPA</div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-dot">📚</div>
-      <div>
-        <div class="edu-title">Bachelor of Science in Computer Science</div>
-        <div class="edu-sub">Graphic Era University, Dehradun · 2022 – 2025</div>
-      </div>
-      <div class="edu-gpa">8.05 GPA</div>
-    </div>
+    <div class="edu-card"><div class="edu-dot">🎓</div><div><div class="edu-title">Master of Computer Applications (MCA)</div><div class="edu-sub">Amity University, Noida · 2025 – Present</div></div><div class="edu-gpa">8.04 GPA</div></div>
+    <div class="edu-card"><div class="edu-dot">📚</div><div><div class="edu-title">Bachelor of Science in Computer Science</div><div class="edu-sub">Graphic Era University, Dehradun · 2022 – 2025</div></div><div class="edu-gpa">8.05 GPA</div></div>
   </div>
 </div>
 
@@ -432,19 +173,25 @@ footer{background:var(--surface);border-top:.5px solid var(--sep);padding:28px 2
   <div class="cert-list">
     <div class="cert-card">
       <div class="cert-dot">🏆</div>
-      <div>
+      <div class="cert-info">
         <div class="cert-title">Unreal Engine 5 C++ Game Development (Fully Updated in 5.6)</div>
         <div class="cert-sub">Udemy · GameDev.tv Team & Kaan Alpar · 26.5 hours</div>
       </div>
-      <div class="cert-badge">May 2026</div>
+      <div class="cert-right">
+        <span class="cert-badge">May 2026</span>
+        <a class="cert-link" href="https://www.udemy.com/certificate/UC-fafd491d-186c-489c-96ba-cb26598eaf02/" target="_blank">View ↗</a>
+      </div>
     </div>
     <div class="cert-card">
       <div class="cert-dot">🏆</div>
-      <div>
+      <div class="cert-info">
         <div class="cert-title">Beginning C++ Programming – From Beginner to Beyond</div>
         <div class="cert-sub">Udemy · Tim Buchalka's Learn Programming Academy · 46 hours</div>
       </div>
-      <div class="cert-badge">Apr 2023</div>
+      <div class="cert-right">
+        <span class="cert-badge">Apr 2023</span>
+        <a class="cert-link" href="https://www.udemy.com/certificate/UC-91ff6951-7955-4146-acc1-e1d1e30829bf/" target="_blank">View ↗</a>
+      </div>
     </div>
   </div>
 </div>
@@ -473,38 +220,20 @@ footer{background:var(--surface);border-top:.5px solid var(--sep);padding:28px 2
   <div class="footer-copy">© 2026 Pulkit Kumar · Built with passion & Unreal imagination</div>
 </footer>
 
+<script src="script.js"></script>
 <script>
-let currentTheme="light";
-function toggleTheme(){
-  currentTheme=currentTheme==="light"?"dark":"light";
-  document.documentElement.setAttribute("data-theme",currentTheme);
-  document.getElementById("themeBtn").textContent=currentTheme==="dark"?"☀️":"🌙";
-}
-function scrollToSection(id){
-  document.getElementById(id)?.scrollIntoView({behavior:"smooth"});
-  document.querySelectorAll(".nav-tab").forEach(t=>t.classList.remove("active"));
-  event.target.classList.add("active");
-}
-const roles=["3D Games","Blueprint Logic","C++ Plugins","UE4 Systems","Game Mechanics"];
-let ri=0,ci=0,deleting=false,tw=document.getElementById("typewriter");
-function typeLoop(){
-  const word=roles[ri];
-  if(!deleting){tw.textContent=word.slice(0,ci+1);ci++;if(ci===word.length){deleting=true;setTimeout(typeLoop,1800);return}}
-  else{tw.textContent=word.slice(0,ci-1);ci--;if(ci===0){deleting=false;ri=(ri+1)%roles.length}}
-  setTimeout(typeLoop,deleting?60:110);
-}
-typeLoop();
-function animateSkills(){document.querySelectorAll(".skill-fill").forEach(el=>{el.style.width=el.dataset.w+"%"});}
-const skillsObs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){animateSkills();skillsObs.disconnect();}},{threshold:.3});
-skillsObs.observe(document.getElementById("skillsGrid"));
-function filterProjects(q){
-  const rows=document.querySelectorAll("#appsGrid .app-row");
-  let any=false;
-  rows.forEach(r=>{
-    const match=!q||r.dataset.tags.includes(q.toLowerCase())||r.querySelector(".app-name").textContent.toLowerCase().includes(q.toLowerCase());
-    r.style.display=match?"":"none";if(match)any=true;
-  });
-  document.getElementById("noResults").style.display=any?"none":"block";
+function handleGet(e, btnId, url) {
+  e.stopPropagation();
+  const btn = document.getElementById(btnId);
+  if (btn.classList.contains('open')) { window.location.href = url; return; }
+  if (btn.classList.contains('loading')) return;
+  btn.classList.add('loading');
+  setTimeout(() => {
+    btn.classList.remove('loading');
+    btn.classList.add('open');
+    btn.textContent = 'OPEN';
+  }, 1200);
+  setTimeout(() => { window.location.href = url; }, 2500);
 }
 </script>
 </body>

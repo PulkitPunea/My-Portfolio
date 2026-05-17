@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>3D Model Viewer · Pulkit Kumar</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body><nav class="proj-nav">
+  <div class="proj-nav-left"><a class="back-btn" href="index.html">← Back</a></div>
+  <div class="proj-nav-center">pulkit kumar · projects · 02 of 04</div>
+  <div class="proj-nav-right">
+    <a class="prev-next" href="project-vehicle-simulator.html">← Prev</a>
+    <a class="prev-next" href="project-facemask.html">Next →</a>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+  </div>
+</nav>
+<div class="proj-hero">
+  <div class="proj-hero-inner">
+    <div class="proj-eyebrow">Project 02 of 04 · 3D Rendering · Qt Framework</div>
+    <div class="proj-icon-title">
+      <div class="proj-icon-big">📦</div>
+      <div>
+        <div class="proj-title">3D Model<br>Viewer</div>
+        <div class="proj-subtitle">Qt 6.7 · Qt Quick 3D · QML · C++ · CMake</div>
+      </div>
+    </div>
+    <div class="proj-hero-meta">
+      <span class="meta-pill">Qt 6.7</span>
+      <span class="meta-pill">Qt Quick 3D</span>
+      <span class="meta-pill">QML</span>
+      <span class="meta-pill">C++ ModelManager</span>
+      <span class="meta-pill">Balsam Asset Pipeline</span>
+      <span class="meta-pill">CMake</span>
+    </div>
+  </div>
+</div>
+<div class="proj-content">
+  <div class="proj-stats">
+    <div class="proj-stat-card"><div class="proj-stat-num">Qt6</div><div class="proj-stat-label">Framework</div></div>
+    <div class="proj-stat-card"><div class="proj-stat-num">QML</div><div class="proj-stat-label">UI Layer</div></div>
+    <div class="proj-stat-card"><div class="proj-stat-num">C++</div><div class="proj-stat-label">Backend</div></div>
+    <div class="proj-stat-card"><div class="proj-stat-num">3D</div><div class="proj-stat-label">Real-time</div></div>
+  </div>
+  <div class="proj-section">
+    <div class="proj-section-title">Overview</div>
+    <div class="proj-overview">A desktop 3D model inspection application built with Qt 6.7 and Qt Quick 3D. The architecture mirrors the professional C++ + scripting split used in game engines — QML handles the real-time 3D scene and UI layer while a C++ ModelManager class manages asset loading, state, and business logic. External models (FBX, OBJ, glTF) are converted into Qt's optimised .mesh format using Balsam.exe for fast runtime loading. Built with CMake following Qt project structure conventions across clean module directories.</div>
+  </div>
+  <div class="proj-section">
+    <div class="proj-section-title">Tech Stack</div>
+    <div class="tech-grid">
+      <span class="tech-tag tt-blue">Qt 6.7</span>
+      <span class="tech-tag tt-blue">Qt Quick 3D</span>
+      <span class="tech-tag tt-indigo">QML</span>
+      <span class="tech-tag tt-indigo">C++ (ModelManager)</span>
+      <span class="tech-tag tt-teal">Balsam Asset Pipeline</span>
+      <span class="tech-tag tt-teal">FBX · OBJ · glTF</span>
+      <span class="tech-tag tt-orange">CMake</span>
+      <span class="tech-tag tt-blue">Git · GitHub</span>
+    </div>
+  </div>
+  <div class="proj-section">
+    <div class="proj-section-title">Key Features</div>
+    <div class="features-list">
+      <div class="feature-row"><div class="feature-icon fi-blue">🏗️</div><div><div class="feature-label">QML + C++ Split Architecture</div><div class="feature-desc">QML owns the 3D scene and interactive UI layer; C++ ModelManager handles all asset logic and state — the same separation of concerns as UE4's Blueprint + C++ workflow.</div></div></div>
+      <div class="feature-row"><div class="feature-icon fi-indigo">📐</div><div><div class="feature-label">Multi-format Asset Pipeline</div><div class="feature-desc">Balsam.exe converts FBX, OBJ, and glTF files into Qt's optimised .mesh format at build time, enabling fast runtime loading without re-parsing external formats.</div></div></div>
+      <div class="feature-row"><div class="feature-icon fi-teal">🔄</div><div><div class="feature-label">Runtime Asset Swapping</div><div class="feature-desc">Skeletal mesh import pipeline with animation Blueprint playback, supporting runtime asset swapping without restarting the application.</div></div></div>
+      <div class="feature-row"><div class="feature-icon fi-orange">🎬</div><div><div class="feature-label">Interactive Controls</div><div class="feature-desc">Blueprint event graphs for user interaction: object rotation, zoom, real-time material switching, and cinematic camera fly-throughs via Qt animation timelines.</div></div></div>
+    </div>
+  </div>
+  <div class="proj-section">
+    <div class="proj-section-title">Screenshots</div>
+    <div class="screenshots-grid"><div class="screenshot-slot" id="ss0">
+        <input type="file" accept="image/*" onchange="loadImage(this,'ss0')"/>
+        <div class="ss-icon">🖼️</div>
+        <div class="ss-label">Screenshot 1</div>
+        <div class="ss-hint">Click to upload</div>
+        <img id="ss0-img" src="" alt=""/>
+      </div><div class="screenshot-slot" id="ss1">
+        <input type="file" accept="image/*" onchange="loadImage(this,'ss1')"/>
+        <div class="ss-icon">🖼️</div>
+        <div class="ss-label">Screenshot 2</div>
+        <div class="ss-hint">Click to upload</div>
+        <img id="ss1-img" src="" alt=""/>
+      </div><div class="screenshot-slot" id="ss2">
+        <input type="file" accept="image/*" onchange="loadImage(this,'ss2')"/>
+        <div class="ss-icon">🖼️</div>
+        <div class="ss-label">Screenshot 3</div>
+        <div class="ss-hint">Click to upload</div>
+        <img id="ss2-img" src="" alt=""/>
+      </div></div>
+  </div>
+  <div class="proj-section"><div class="github-cta">
+      <div>
+        <div class="github-cta-title">View Source Code</div>
+        <div class="github-cta-sub">github.com/PulkitPunea/3d-Model-Viewer</div>
+      </div>
+      <a class="github-link" href="https://github.com/PulkitPunea/3d-Model-Viewer" target="_blank">View on GitHub ↗</a>
+    </div></div>
+</div><footer class="proj-footer">
+  <div class="proj-footer-inner">
+    <div>
+      <div class="pf-name">Pulkit Kumar</div>
+      <div class="pf-sub">Unreal Engine Developer · C++ · Blueprint · 3D</div>
+      <div class="pf-links">
+        <a class="pf-link" href="mailto:pulkitpunea2@gmail.com">✉ Email</a>
+        <a class="pf-link" href="https://www.linkedin.com/in/pulkit-kumar-53a23a259/" target="_blank">in LinkedIn</a>
+        <a class="pf-link" href="https://github.com/PulkitPunea" target="_blank">⌥ GitHub</a>
+      </div>
+    </div>
+    <div class="pf-nav">
+      <a class="pf-nav-btn" href="project-vehicle-simulator.html">← Prev Project</a>
+      <a class="pf-nav-btn" href="project-facemask.html">Next Project →</a>
+    </div>
+  </div>
+  <div class="pf-copy">© 2026 Pulkit Kumar · Built with passion & Unreal imagination</div>
+</footer><script>
+let t="light";
+function toggleTheme(){t=t==="light"?"dark":"light";document.documentElement.setAttribute("data-theme",t);document.getElementById("themeBtn").textContent=t==="dark"?"☀️":"🌙";}
+function loadImage(input,id){const f=input.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{document.getElementById(id+"-img").src=e.target.result;document.getElementById(id).classList.add("has-image");};r.readAsDataURL(f);}
+</script></body></html>
