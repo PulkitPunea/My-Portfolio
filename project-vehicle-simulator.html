@@ -4,25 +4,33 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Android Vehicle Simulator · Pulkit Kumar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 </head>
-<body><nav class="proj-nav">
-  <div class="proj-nav-left"><a class="back-btn" href="index.html">← Back</a></div>
-  <div class="proj-nav-center">pulkit kumar · projects · 01 of 04</div>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="proj-nav-left">
+    <a class="back-btn" href="index.html">← Back</a>
+  </div>
+  <div class="proj-nav-center">pulkit kumar · project 01 of 04</div>
   <div class="proj-nav-right">
     <a class="prev-next" href="project-brain-tumor.html">← Prev</a>
     <a class="prev-next" href="project-3d-model-viewer.html">Next →</a>
     <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
   </div>
 </nav>
+
+<!-- FROSTED GLASS HERO -->
 <div class="proj-hero">
-  <div class="proj-hero-inner">
+  <div class="proj-hero-glass">
     <div class="proj-eyebrow">Project 01 of 04 · Game Development · Unreal Engine</div>
     <div class="proj-icon-title">
       <div class="proj-icon-big">🚗</div>
       <div>
-        <div class="proj-title">Android Vehicle<br>Simulator</div>
+        <div class="proj-title">Android <span class="proj-title-grad">Vehicle</span><br>Simulator</div>
         <div class="proj-subtitle">Unreal Engine 4.27 · C++ Plugins · Blueprint · Google Play</div>
       </div>
     </div>
@@ -35,17 +43,25 @@
     </div>
   </div>
 </div>
+
+<!-- CONTENT -->
 <div class="proj-content">
+
+  <!-- STATS -->
   <div class="proj-stats">
     <div class="proj-stat-card"><div class="proj-stat-num">UE4</div><div class="proj-stat-label">Engine</div></div>
     <div class="proj-stat-card"><div class="proj-stat-num">C++</div><div class="proj-stat-label">Plugin Dev</div></div>
     <div class="proj-stat-card"><div class="proj-stat-num">📱</div><div class="proj-stat-label">Google Play</div></div>
     <div class="proj-stat-card"><div class="proj-stat-num">3D</div><div class="proj-stat-label">Real-time</div></div>
   </div>
+
+  <!-- OVERVIEW -->
   <div class="proj-section">
     <div class="proj-section-title">Overview</div>
-    <div class="proj-overview">A production-ready 3D vehicle simulator deployed on Android via Google Play Store, built using the professional Unreal Engine 4 workflow. The architecture separates concerns cleanly — modular C++ plugins handle vehicle physics and procedural environment generation, while complete game logic (events, timelines, actor spawning, touch-input handling) is authored in Blueprint scripting for fast iteration. Memory-efficient asset streaming keeps frame rates stable across a wide range of Android hardware.</div>
+    <div class="proj-overview">A production-ready 3D vehicle simulator deployed on Android via Google Play Store, built using the professional Unreal Engine 4 workflow. The architecture separates concerns cleanly — modular C++ plugins handle vehicle physics and procedural environment generation, while the complete game logic (events, timelines, actor spawning, touch-input handling) is authored in Blueprint scripting for fast iteration. Memory-efficient asset streaming keeps frame rates stable across a wide range of Android hardware.</div>
   </div>
+
+  <!-- TECH STACK -->
   <div class="proj-section">
     <div class="proj-section-title">Tech Stack</div>
     <div class="tech-grid">
@@ -60,46 +76,101 @@
       <span class="tech-tag tt-blue">Git · GitHub</span>
     </div>
   </div>
+
+  <!-- KEY FEATURES -->
   <div class="proj-section">
     <div class="proj-section-title">Key Features</div>
     <div class="features-list">
-      <div class="feature-row"><div class="feature-icon fi-blue">🧩</div><div><div class="feature-label">C++ Plugin Architecture</div><div class="feature-desc">Modular C++ plugins for vehicle physics and procedural environments, exposed to Blueprint via UE4's reflection system (UFUNCTION, UPROPERTY) — mirroring professional studio workflows.</div></div></div>
-      <div class="feature-row"><div class="feature-icon fi-indigo">🔷</div><div><div class="feature-label">Full Blueprint Game Logic</div><div class="feature-desc">Complete game logic authored in Blueprint — events, timelines, actor spawning, and touch-input controllers — keeping the gameplay layer fast to iterate without recompiling C++.</div></div></div>
-      <div class="feature-row"><div class="feature-icon fi-teal">🌍</div><div><div class="feature-label">Procedural Environments</div><div class="feature-desc">Runtime procedural world generation via C++ plugin, creating varied environments without baked-in level data — keeping APK size manageable on mobile.</div></div></div>
-      <div class="feature-row"><div class="feature-icon fi-orange">📱</div><div><div class="feature-label">Mobile Optimization</div><div class="feature-desc">Memory-efficient asset streaming to maintain stable frame rates across Android device profiles, with custom touch-input handling mapping gestures to vehicle controls.</div></div></div>
-      <div class="feature-row"><div class="feature-icon fi-blue">🚀</div><div><div class="feature-label">Google Play Deployment</div><div class="feature-desc">Full deployment pipeline — build packaging, APK signing, store listing, and release management through the Google Play Console.</div></div></div>
+      <div class="feature-row">
+        <div class="feature-icon fi-blue">🧩</div>
+        <div><div class="feature-label">C++ Plugin Architecture</div><div class="feature-desc">Modular C++ plugins for vehicle physics and procedural environments, exposed to Blueprint via UE4's reflection system (UFUNCTION, UPROPERTY) — mirroring professional studio workflows.</div></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon fi-indigo">🔷</div>
+        <div><div class="feature-label">Full Blueprint Game Logic</div><div class="feature-desc">Complete game logic authored in Blueprint — events, timelines, actor spawning, and touch-input controllers — keeping the gameplay layer fast to iterate without recompiling C++.</div></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon fi-teal">🌍</div>
+        <div><div class="feature-label">Procedural Environments</div><div class="feature-desc">Runtime procedural world generation via C++ plugin, creating varied environments without baked-in level data — keeping APK size manageable on mobile.</div></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon fi-orange">📱</div>
+        <div><div class="feature-label">Mobile Optimization & Deployment</div><div class="feature-desc">Memory-efficient asset streaming for stable frame rates across Android profiles, with custom touch-input handling and full Google Play Console deployment pipeline.</div></div>
+      </div>
     </div>
   </div>
+
+  <!-- SCREENSHOTS
+       Change data-layout="horizontal" to data-layout="vertical" to switch layout.
+       To add more screenshots: duplicate any .screenshot-slot block below. -->
   <div class="proj-section">
     <div class="proj-section-title">Screenshots</div>
-    <div class="screenshots-grid"><div class="screenshot-slot" id="ss0">
-        <input type="file" accept="image/*" onchange="loadImage(this,'ss0')"/>
-        <div class="ss-icon">🖼️</div>
-        <div class="ss-label">Screenshot 1</div>
-        <div class="ss-hint">Click to upload</div>
-        <img id="ss0-img" src="" alt=""/>
-      </div><div class="screenshot-slot" id="ss1">
-        <input type="file" accept="image/*" onchange="loadImage(this,'ss1')"/>
-        <div class="ss-icon">🖼️</div>
-        <div class="ss-label">Screenshot 2</div>
-        <div class="ss-hint">Click to upload</div>
-        <img id="ss1-img" src="" alt=""/>
-      </div><div class="screenshot-slot" id="ss2">
-        <input type="file" accept="image/*" onchange="loadImage(this,'ss2')"/>
-        <div class="ss-icon">🖼️</div>
-        <div class="ss-label">Screenshot 3</div>
-        <div class="ss-hint">Click to upload</div>
-        <img id="ss2-img" src="" alt=""/>
-      </div></div>
+
+    <!-- data-layout: "horizontal" = scroll row | "vertical" = stacked column -->
+    <div class="screenshots-wrap" data-layout="vertical">
+      <div class="ss-arrow ss-arrow-left">&#8249;</div>
+
+      <div class="screenshots-scroll">
+
+        <!-- Set src="images/your-screenshot.jpg" to show an image.
+             Leave src="" to show the placeholder. -->
+
+        <div class="screenshot-slot">
+          <div class="ss-icon">&#x1F5BC;&#xFE0F;</div>
+          <div class="ss-label">Screenshot 1</div>
+          <img src="img/vehicle-ss1.png" alt="Screenshot 1"/>
+        </div>
+
+        <div class="screenshot-slot">
+          <div class="ss-icon">&#x1F5BC;&#xFE0F;</div>
+          <div class="ss-label">Screenshot 2</div>
+          <img src="img/vehicle-ss2.png" alt="Screenshot 2"/>
+        </div>
+
+        <div class="screenshot-slot">
+          <div class="ss-icon">&#x1F5BC;&#xFE0F;</div>
+          <div class="ss-label">Screenshot 3</div>
+          <img src="img/vehicle-ss3.png" alt="Screenshot 3"/>
+        </div>
+
+        <!-- <div class="screenshot-slot">
+          <div class="ss-icon">&#x1F5BC;&#xFE0F;</div>
+          <div class="ss-label">Screenshot 4</div>
+          <img src="" alt="Screenshot 4"/>
+        </div> -->
+
+        <!-- ADD MORE: copy this block and set the src
+        <div class="screenshot-slot">
+          <div class="ss-icon">&#x1F5BC;&#xFE0F;</div>
+          <div class="ss-label">Screenshot 4</div>
+          <img src="images/ss4.jpg" alt="Screenshot 4"/>
+        </div>
+        -->
+
+      </div>
+
+      <div class="ss-arrow ss-arrow-right">&#8250;</div>
+    </div>
+
+    <!-- dot indicators — built automatically by script.js -->
+    <div class="ss-dots"></div>
   </div>
-  <div class="proj-section"><div class="github-cta">
+
+  <!-- GITHUB CTA -->
+  <div class="proj-section">
+    <div class="github-cta">
       <div>
         <div class="github-cta-title">View Source Code</div>
         <div class="github-cta-sub">github.com/PulkitPunea</div>
       </div>
       <a class="github-link" href="https://github.com/PulkitPunea" target="_blank">View on GitHub ↗</a>
-    </div></div>
-</div><footer class="proj-footer">
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="proj-footer">
   <div class="proj-footer-inner">
     <div>
       <div class="pf-name">Pulkit Kumar</div>
@@ -110,14 +181,10 @@
         <a class="pf-link" href="https://github.com/PulkitPunea" target="_blank">⌥ GitHub</a>
       </div>
     </div>
-    <div class="pf-nav">
-      <a class="pf-nav-btn" href="project-brain-tumor.html">← Prev Project</a>
-      <a class="pf-nav-btn" href="project-3d-model-viewer.html">Next Project →</a>
-    </div>
   </div>
-  <div class="pf-copy">© 2026 Pulkit Kumar · Built with passion & Unreal imagination</div>
-</footer><script>
-let t="light";
-function toggleTheme(){t=t==="light"?"dark":"light";document.documentElement.setAttribute("data-theme",t);document.getElementById("themeBtn").textContent=t==="dark"?"☀️":"🌙";}
-function loadImage(input,id){const f=input.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{document.getElementById(id+"-img").src=e.target.result;document.getElementById(id).classList.add("has-image");};r.readAsDataURL(f);}
-</script></body></html>
+  <span class="pf-copy">© 2026 Pulkit Kumar · Built with passion & Unreal imagination</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -4,25 +4,31 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>RT FaceMask Detection · Pulkit Kumar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 </head>
-<body><nav class="proj-nav">
-  <div class="proj-nav-left"><a class="back-btn" href="index.html">← Back</a></div>
-  <div class="proj-nav-center">pulkit kumar · projects · 03 of 04</div>
+<body>
+
+<nav class="site-nav">
+  <div class="proj-nav-left">
+    <a class="back-btn" href="index.html">← Back</a>
+  </div>
+  <div class="proj-nav-center">pulkit kumar · project 03 of 04</div>
   <div class="proj-nav-right">
     <a class="prev-next" href="project-3d-model-viewer.html">← Prev</a>
     <a class="prev-next" href="project-brain-tumor.html">Next →</a>
     <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
   </div>
 </nav>
+
 <div class="proj-hero">
-  <div class="proj-hero-inner">
+  <div class="proj-hero-glass">
     <div class="proj-eyebrow">Project 03 of 04 · Computer Vision · Machine Learning</div>
     <div class="proj-icon-title">
       <div class="proj-icon-big">😷</div>
       <div>
-        <div class="proj-title">RT FaceMask<br>Detection</div>
+        <div class="proj-title">RT FaceMask<br><span class="proj-title-grad">Detection</span></div>
         <div class="proj-subtitle">YOLOv8m · OpenCV · Python · CustomTkinter · PyInstaller</div>
       </div>
     </div>
@@ -36,17 +42,21 @@
     </div>
   </div>
 </div>
+
 <div class="proj-content">
+
   <div class="proj-stats">
     <div class="proj-stat-card"><div class="proj-stat-num">YOLOv8</div><div class="proj-stat-label">Model</div></div>
     <div class="proj-stat-card"><div class="proj-stat-num">RT</div><div class="proj-stat-label">Real-time</div></div>
     <div class="proj-stat-card"><div class="proj-stat-num">GUI</div><div class="proj-stat-label">Desktop App</div></div>
     <div class="proj-stat-card"><div class="proj-stat-num">.exe</div><div class="proj-stat-label">Packaged</div></div>
   </div>
+
   <div class="proj-section">
     <div class="proj-section-title">Overview</div>
     <div class="proj-overview">A standalone Python desktop application for real-time face mask detection via webcam, with a live GUI and detection analytics. Integrates a trained YOLOv8m model with OpenCV for frame-by-frame inference using threaded camera capture to avoid UI blocking. Built with a CustomTkinter GUI showing a live camera feed, start/stop controls, real-time detection counter, and FPS overlay. Packaged as a standalone executable using PyInstaller with bundled model weights — demonstrating end-to-end application shipping experience.</div>
   </div>
+
   <div class="proj-section">
     <div class="proj-section-title">Tech Stack</div>
     <div class="tech-grid">
@@ -59,45 +69,76 @@
       <span class="tech-tag tt-blue">Git · GitHub</span>
     </div>
   </div>
+
   <div class="proj-section">
     <div class="proj-section-title">Key Features</div>
     <div class="features-list">
-      <div class="feature-row"><div class="feature-icon fi-blue">⚡</div><div><div class="feature-label">Real-time Inference Pipeline</div><div class="feature-desc">YOLOv8m model integrated with OpenCV for live frame-by-frame detection. Threaded camera capture ensures inference never blocks the UI, maintaining smooth FPS.</div></div></div>
-      <div class="feature-row"><div class="feature-icon fi-indigo">🖥️</div><div><div class="feature-label">Desktop GUI</div><div class="feature-desc">CustomTkinter GUI with live camera feed display, start/stop controls, real-time detection counter, FPS overlay, and correct aspect ratio padding.</div></div></div>
-      <div class="feature-row"><div class="feature-icon fi-teal">📦</div><div><div class="feature-label">Standalone Executable</div><div class="feature-desc">Packaged with PyInstaller — bundled model weights (best.pt) and icon into a single .exe. No Python installation required to run.</div></div></div>
-      <div class="feature-row"><div class="feature-icon fi-orange">🎯</div><div><div class="feature-label">Performance Tuning</div><div class="feature-desc">Inference optimised for real-time FPS on consumer hardware — same performance-critical thinking directly applicable to game AI and character detection in UE4.</div></div></div>
+      <div class="feature-row">
+        <div class="feature-icon fi-blue">⚡</div>
+        <div><div class="feature-label">Real-time Inference Pipeline</div><div class="feature-desc">YOLOv8m model integrated with OpenCV for live frame-by-frame detection. Threaded camera capture ensures inference never blocks the UI, maintaining smooth FPS.</div></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon fi-indigo">🖥️</div>
+        <div><div class="feature-label">Desktop GUI</div><div class="feature-desc">CustomTkinter GUI with live camera feed display, start/stop controls, real-time detection counter, FPS overlay, and correct aspect ratio padding.</div></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon fi-teal">📦</div>
+        <div><div class="feature-label">Standalone Executable</div><div class="feature-desc">Packaged with PyInstaller — bundled model weights (best.pt) and icon into a single .exe. No Python installation required to run.</div></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon fi-orange">🎯</div>
+        <div><div class="feature-label">Performance Tuning</div><div class="feature-desc">Inference optimised for real-time FPS on consumer hardware — same performance-critical thinking directly applicable to game AI and character detection in UE4.</div></div>
+      </div>
     </div>
   </div>
+
   <div class="proj-section">
     <div class="proj-section-title">Screenshots</div>
-    <div class="screenshots-grid"><div class="screenshot-slot" id="ss0">
-        <input type="file" accept="image/*" onchange="loadImage(this,'ss0')"/>
-        <div class="ss-icon">🖼️</div>
-        <div class="ss-label">Screenshot 1</div>
-        <div class="ss-hint">Click to upload</div>
-        <img id="ss0-img" src="" alt=""/>
-      </div><div class="screenshot-slot" id="ss1">
-        <input type="file" accept="image/*" onchange="loadImage(this,'ss1')"/>
-        <div class="ss-icon">🖼️</div>
-        <div class="ss-label">Screenshot 2</div>
-        <div class="ss-hint">Click to upload</div>
-        <img id="ss1-img" src="" alt=""/>
-      </div><div class="screenshot-slot" id="ss2">
-        <input type="file" accept="image/*" onchange="loadImage(this,'ss2')"/>
-        <div class="ss-icon">🖼️</div>
-        <div class="ss-label">Screenshot 3</div>
-        <div class="ss-hint">Click to upload</div>
-        <img id="ss2-img" src="" alt=""/>
-      </div></div>
+    <!-- data-layout: "horizontal" = scroll row | "vertical" = stacked landscape -->
+    <div class="screenshots-wrap" data-layout="vertical">
+      <div class="ss-arrow ss-arrow-left">&#8249;</div>
+      <div class="screenshots-scroll">
+        <div class="screenshot-slot">
+          <div class="ss-icon">&#x1F5BC;&#xFE0F;</div>
+          <div class="ss-label">Screenshot 1</div>
+          <img src="img/facemask-ss1.png" alt="Screenshot 1"/>
+        </div>
+        <div class="screenshot-slot">
+          <div class="ss-icon">&#x1F5BC;&#xFE0F;</div>
+          <div class="ss-label">Screenshot 2</div>
+          <img src="" alt="Screenshot 2"/>
+        </div>
+        <!-- <div class="screenshot-slot">
+          <div class="ss-icon">&#x1F5BC;&#xFE0F;</div>
+          <div class="ss-label">Screenshot 3</div>
+          <img src="" alt="Screenshot 3"/>
+        </div> -->
+        <!-- ADD MORE: copy this block and set src="images/your-screenshot.jpg"
+        <div class="screenshot-slot">
+          <div class="ss-icon">&#x1F5BC;&#xFE0F;</div>
+          <div class="ss-label">Screenshot 4</div>
+          <img src="" alt="Screenshot 4"/>
+        </div>
+        -->
+      </div>
+      <div class="ss-arrow ss-arrow-right">&#8250;</div>
+    </div>
+    <div class="ss-dots"></div>
   </div>
-  <div class="proj-section"><div class="github-cta">
+
+  <div class="proj-section">
+    <div class="github-cta">
       <div>
         <div class="github-cta-title">View Source Code</div>
         <div class="github-cta-sub">github.com/PulkitPunea/RT-FaceMask-Detection</div>
       </div>
       <a class="github-link" href="https://github.com/PulkitPunea/RT-FaceMask-Detection" target="_blank">View on GitHub ↗</a>
-    </div></div>
-</div><footer class="proj-footer">
+    </div>
+  </div>
+
+</div>
+
+<footer class="proj-footer">
   <div class="proj-footer-inner">
     <div>
       <div class="pf-name">Pulkit Kumar</div>
@@ -108,14 +149,10 @@
         <a class="pf-link" href="https://github.com/PulkitPunea" target="_blank">⌥ GitHub</a>
       </div>
     </div>
-    <div class="pf-nav">
-      <a class="pf-nav-btn" href="project-3d-model-viewer.html">← Prev Project</a>
-      <a class="pf-nav-btn" href="project-brain-tumor.html">Next Project →</a>
-    </div>
   </div>
-  <div class="pf-copy">© 2026 Pulkit Kumar · Built with passion & Unreal imagination</div>
-</footer><script>
-let t="light";
-function toggleTheme(){t=t==="light"?"dark":"light";document.documentElement.setAttribute("data-theme",t);document.getElementById("themeBtn").textContent=t==="dark"?"☀️":"🌙";}
-function loadImage(input,id){const f=input.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{document.getElementById(id+"-img").src=e.target.result;document.getElementById(id).classList.add("has-image");};r.readAsDataURL(f);}
-</script></body></html>
+  <span class="pf-copy">© 2026 Pulkit Kumar · Built with passion & Unreal imagination</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -4,25 +4,31 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Brain Tumor Detection · Pulkit Kumar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 </head>
-<body><nav class="proj-nav">
-  <div class="proj-nav-left"><a class="back-btn" href="index.html">← Back</a></div>
-  <div class="proj-nav-center">pulkit kumar · projects · 04 of 04</div>
+<body>
+
+<nav class="site-nav">
+  <div class="proj-nav-left">
+    <a class="back-btn" href="index.html">← Back</a>
+  </div>
+  <div class="proj-nav-center">pulkit kumar · project 04 of 04</div>
   <div class="proj-nav-right">
     <a class="prev-next" href="project-facemask.html">← Prev</a>
     <a class="prev-next" href="project-vehicle-simulator.html">Next →</a>
     <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
   </div>
 </nav>
+
 <div class="proj-hero">
-  <div class="proj-hero-inner">
+  <div class="proj-hero-glass">
     <div class="proj-eyebrow">Project 04 of 04 · Medical AI · Computer Vision</div>
     <div class="proj-icon-title">
       <div class="proj-icon-big">🧠</div>
       <div>
-        <div class="proj-title">Brain Tumor<br>Detection</div>
+        <div class="proj-title">Brain Tumor<br><span class="proj-title-grad">Detection</span></div>
         <div class="proj-subtitle">YOLOv8n · Ultralytics · Python · Medical Imaging</div>
       </div>
     </div>
@@ -35,17 +41,21 @@
     </div>
   </div>
 </div>
+
 <div class="proj-content">
+
   <div class="proj-stats">
     <div class="proj-stat-card"><div class="proj-stat-num">YOLOv8n</div><div class="proj-stat-label">Architecture</div></div>
     <div class="proj-stat-card"><div class="proj-stat-num">640px</div><div class="proj-stat-label">Image Size</div></div>
     <div class="proj-stat-card"><div class="proj-stat-num">MRI</div><div class="proj-stat-label">Domain</div></div>
     <div class="proj-stat-card"><div class="proj-stat-num">nano</div><div class="proj-stat-label">Optimised</div></div>
   </div>
+
   <div class="proj-section">
     <div class="proj-section-title">Overview</div>
     <div class="proj-overview">A medical imaging system that localises brain tumors in MRI scans using the lightweight YOLOv8n (nano) architecture. Trained on annotated MRI datasets using the Ultralytics YOLO CLI (task=detect, imgsz=640) — the nano variant was chosen specifically for real-time inference speed on resource-constrained hardware, balancing accuracy against latency. The project is structured with separate data, scripts, and runs/detect directories with tracked model outputs, demonstrating disciplined ML experiment management.</div>
   </div>
+
   <div class="proj-section">
     <div class="proj-section-title">Tech Stack</div>
     <div class="tech-grid">
@@ -58,45 +68,76 @@
       <span class="tech-tag tt-blue">Git · GitHub</span>
     </div>
   </div>
+
   <div class="proj-section">
     <div class="proj-section-title">Key Features</div>
     <div class="features-list">
-      <div class="feature-row"><div class="feature-icon fi-blue">🎯</div><div><div class="feature-label">Tumor Localisation</div><div class="feature-desc">Object detection trained on annotated MRI scans — outputs bounding boxes around tumor regions for rapid diagnostic screening assistance.</div></div></div>
-      <div class="feature-row"><div class="feature-icon fi-indigo">⚡</div><div><div class="feature-label">Nano Model for Speed</div><div class="feature-desc">YOLOv8n chosen deliberately over larger variants — the nano architecture trades marginal accuracy for significantly faster inference on resource-constrained hardware, enabling real-time deployment.</div></div></div>
-      <div class="feature-row"><div class="feature-icon fi-teal">🗂️</div><div><div class="feature-label">Disciplined ML Structure</div><div class="feature-desc">Separate data, scripts, and runs/detect directories with tracked model outputs — clean experiment management for reproducible training runs.</div></div></div>
-      <div class="feature-row"><div class="feature-icon fi-orange">🔬</div><div><div class="feature-label">Performance-critical Mindset</div><div class="feature-desc">Optimising inference pipelines for latency-sensitive, constrained hardware — the same thinking applied to game AI and runtime systems in Unreal Engine.</div></div></div>
+      <div class="feature-row">
+        <div class="feature-icon fi-blue">🎯</div>
+        <div><div class="feature-label">Tumor Localisation</div><div class="feature-desc">Object detection trained on annotated MRI scans — outputs bounding boxes around tumor regions for rapid diagnostic screening assistance.</div></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon fi-indigo">⚡</div>
+        <div><div class="feature-label">Nano Model for Speed</div><div class="feature-desc">YOLOv8n chosen deliberately over larger variants — the nano architecture trades marginal accuracy for significantly faster inference on resource-constrained hardware, enabling real-time deployment.</div></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon fi-teal">🗂️</div>
+        <div><div class="feature-label">Disciplined ML Structure</div><div class="feature-desc">Separate data, scripts, and runs/detect directories with tracked model outputs — clean experiment management for reproducible training runs.</div></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon fi-orange">🔬</div>
+        <div><div class="feature-label">Performance-critical Mindset</div><div class="feature-desc">Optimising inference pipelines for latency-sensitive, constrained hardware — the same thinking applied to game AI and runtime systems in Unreal Engine.</div></div>
+      </div>
     </div>
   </div>
+
   <div class="proj-section">
     <div class="proj-section-title">Screenshots</div>
-    <div class="screenshots-grid"><div class="screenshot-slot" id="ss0">
-        <input type="file" accept="image/*" onchange="loadImage(this,'ss0')"/>
-        <div class="ss-icon">🖼️</div>
-        <div class="ss-label">Screenshot 1</div>
-        <div class="ss-hint">Click to upload</div>
-        <img id="ss0-img" src="" alt=""/>
-      </div><div class="screenshot-slot" id="ss1">
-        <input type="file" accept="image/*" onchange="loadImage(this,'ss1')"/>
-        <div class="ss-icon">🖼️</div>
-        <div class="ss-label">Screenshot 2</div>
-        <div class="ss-hint">Click to upload</div>
-        <img id="ss1-img" src="" alt=""/>
-      </div><div class="screenshot-slot" id="ss2">
-        <input type="file" accept="image/*" onchange="loadImage(this,'ss2')"/>
-        <div class="ss-icon">🖼️</div>
-        <div class="ss-label">Screenshot 3</div>
-        <div class="ss-hint">Click to upload</div>
-        <img id="ss2-img" src="" alt=""/>
-      </div></div>
+    <!-- data-layout: "horizontal" = scroll row | "vertical" = stacked landscape -->
+    <div class="screenshots-wrap" data-layout="horizontal">
+      <div class="ss-arrow ss-arrow-left">&#8249;</div>
+      <div class="screenshots-scroll">
+        <div class="screenshot-slot">
+          <div class="ss-icon">&#x1F5BC;&#xFE0F;</div>
+          <div class="ss-label">Screenshot 1</div>
+          <img src="" alt="Screenshot 1"/>
+        </div>
+        <div class="screenshot-slot">
+          <div class="ss-icon">&#x1F5BC;&#xFE0F;</div>
+          <div class="ss-label">Screenshot 2</div>
+          <img src="" alt="Screenshot 2"/>
+        </div>
+        <div class="screenshot-slot">
+          <div class="ss-icon">&#x1F5BC;&#xFE0F;</div>
+          <div class="ss-label">Screenshot 3</div>
+          <img src="" alt="Screenshot 3"/>
+        </div>
+        <!-- ADD MORE: copy this block and set src="images/your-screenshot.jpg"
+        <div class="screenshot-slot">
+          <div class="ss-icon">&#x1F5BC;&#xFE0F;</div>
+          <div class="ss-label">Screenshot 4</div>
+          <img src="" alt="Screenshot 4"/>
+        </div>
+        -->
+      </div>
+      <div class="ss-arrow ss-arrow-right">&#8250;</div>
+    </div>
+    <div class="ss-dots"></div>
   </div>
-  <div class="proj-section"><div class="github-cta">
+
+  <div class="proj-section">
+    <div class="github-cta">
       <div>
         <div class="github-cta-title">View Source Code</div>
         <div class="github-cta-sub">github.com/PulkitPunea/Brain-Tumor-Detection-Yolov8n</div>
       </div>
       <a class="github-link" href="https://github.com/PulkitPunea/Brain-Tumor-Detection-Yolov8n" target="_blank">View on GitHub ↗</a>
-    </div></div>
-</div><footer class="proj-footer">
+    </div>
+  </div>
+
+</div>
+
+<footer class="proj-footer">
   <div class="proj-footer-inner">
     <div>
       <div class="pf-name">Pulkit Kumar</div>
@@ -107,14 +148,10 @@
         <a class="pf-link" href="https://github.com/PulkitPunea" target="_blank">⌥ GitHub</a>
       </div>
     </div>
-    <div class="pf-nav">
-      <a class="pf-nav-btn" href="project-facemask.html">← Prev Project</a>
-      <a class="pf-nav-btn" href="project-vehicle-simulator.html">Next Project →</a>
-    </div>
   </div>
-  <div class="pf-copy">© 2026 Pulkit Kumar · Built with passion & Unreal imagination</div>
-</footer><script>
-let t="light";
-function toggleTheme(){t=t==="light"?"dark":"light";document.documentElement.setAttribute("data-theme",t);document.getElementById("themeBtn").textContent=t==="dark"?"☀️":"🌙";}
-function loadImage(input,id){const f=input.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{document.getElementById(id+"-img").src=e.target.result;document.getElementById(id).classList.add("has-image");};r.readAsDataURL(f);}
-</script></body></html>
+  <span class="pf-copy">© 2026 Pulkit Kumar · Built with passion & Unreal imagination</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
