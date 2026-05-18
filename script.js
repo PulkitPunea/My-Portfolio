@@ -51,7 +51,7 @@ function scrollToSection(id) {
   event.target.classList.add("active");
 }
 
-/* ── PROJECT SEARCH FILTER (index only) ── */
+/* ── PROJECT SEARCH FILTER (index only) ─-─ */
 function filterProjects(q) {
   const rows = document.querySelectorAll("#appsGrid .app-row");
   let any = false;
